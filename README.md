@@ -1,5 +1,7 @@
 # windows-shortcut-maker
-Native and lightweight module to make file shortcuts on Windows using Node.js
+Native and lightweight module to make file shortcuts on Windows using Node.js.
+
+Based on https://github.com/phtdacosta/windows-shortcut-maker.
 
 [![npm](https://img.shields.io/npm/dy/windows-shortcut-maker.svg)](https://www.npmjs.com/package/windows-shortcut-maker)
 [![npm version](https://badge.fury.io/js/windows-shortcut-maker.svg)](https://badge.fury.io/js/windows-shortcut-maker)
@@ -35,6 +37,13 @@ try {
 } catch (error) {
     console.log(error)
 }
+
+// It asynchronously creates a "GIMP" shortcut file in the desktop
+sm
+    .make(options)
+    .catch((error) => {
+        console.log(error)
+    }
 ```
 
 # Documentation
@@ -47,6 +56,8 @@ try {
 **`options.filepath`** is the absolute path including the name of which file should the module make a shortcut. **It is required** for the function to work.
 
 **Optional:** **`options.lnkName`** is the name given for the new shortcut file which obeys the same name rules as a regular file does.
+
+**Optional:** **`options.force`** create the shortcut even if the original file cannot be found.
 
 **Optional:** **`options.lnkArgs`** are the arguments passed to the original file when the new shortcut is executed.
 
@@ -64,6 +75,5 @@ try {
 This project exists under the [GPL-3.0 license](https://github.com/phtdacosta/windows-shortcut-maker/blob/master/LICENSE).
 
 # Development
-1. Add an **asynchronous** function version of `makeSync`.
-2. Let developers to make shortcuts anywhere.
-3. Add support for making internet shortcuts.   
+1. Let developers to make shortcuts anywhere.
+2. Add support for making internet shortcuts.
