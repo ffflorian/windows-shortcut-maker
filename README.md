@@ -1,10 +1,8 @@
-# windows-shortcut-maker
+# windows-shortcut-maker [![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ffflorian/windows-shortcut-maker)](https://dependabot.com)
 
 Native and lightweight module to make file shortcuts on Windows using Node.js.
 
 Based on https://github.com/phtdacosta/windows-shortcut-maker.
-
-[![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker)
 
 This module uses a Windows VBScript file to get native access to the operational system API responsible for making file shortcuts.
 
