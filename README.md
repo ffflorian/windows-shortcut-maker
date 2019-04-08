@@ -75,6 +75,5 @@ sm
 This project exists under the [GPL-3.0 license](https://github.com/phtdacosta/windows-shortcut-maker/blob/master/LICENSE).
 
 # Development
-1. Add an **asynchronous** function version of `makeSync`.
-2. Let developers to make shortcuts anywhere.
-3. Add support for making internet shortcuts.
+1. Let developers to make shortcuts anywhere.
+2. Add support for making internet shortcuts.
