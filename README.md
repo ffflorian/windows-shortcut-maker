@@ -54,15 +54,25 @@ sm
 > Returns `void` after synchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
 
 **`options`** is an `Object` that organizedly stores the properties used by the function. Each one is covered below.
+
 **`options.filepath`** is the absolute path including the name of which file should the module make a shortcut. **It is required** for the function to work.
+
 **Optional:** **`options.force`** create the shortcut even if the original file cannot be found.
+
 **Optional:** **`options.linkArgs`** are the arguments passed to the original file when the new shortcut is executed.
+
 **Optional:** **`options.linkCwd`** is the absolute path in which folder the original file should start executing.
+
 **Optional:** **`options.linkDescription`** is the description message shown when the cursor stands over the new shortcut without clicking it.
+
 **Optional:** **`options.linkHotkey`** is the key combination that is going to trigger the new shortcut execution. (e.g. `'ALT+CTRL+F'`)
+
 **Optional:** **`options.linkIcon`** is the absolute path to an `.ico` extension image used as the icon for the new shortcut.
+
 **Optional:** **`options.linkName`** is the name given for the new shortcut file which obeys the same name rules as a regular file does.
+
 **Optional:** **`options.linkWindowMode`** is the initial window mode adopted by the original file when executed. (e.g. `3` is maximized, `4` is normal and `7` is minimized)
+
 
 ## `make(options)`
 
