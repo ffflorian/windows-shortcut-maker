@@ -1,15 +1,13 @@
 {
-  "name": "windows-shortcut-maker",
-  "version": "0.0.4",
+  "author": "Pedro Costa <pedrohenriqueteodorodacosta@gmail.com>",
+  "contributors": [
+    "Florian Keller <github@floriankeller.de>"
+  ],
+  "bugs": {
+    "url": "https://github.com/ffflorian/windows-shortcut-maker/issues"
+  },
   "description": "Make Windows shortcuts easily using this native module with no external dependencies.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/phtdacosta/windows-shortcut-maker.git"
-  },
+  "homepage": "https://github.com/ffflorian/windows-shortcut-maker#readme",
   "keywords": [
     "windows",
     "shortcut",
@@ -19,11 +17,15 @@
     "lnk",
     "url"
   ],
-  "author": "Pedro Costa <pedrohenriqueteodorodacosta@gmail.com>",
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/phtdacosta/windows-shortcut-maker/issues"
+  "main": "index.js",
+  "name": "windows-shortcut-maker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ffflorian/windows-shortcut-maker.git"
   },
-  "homepage": "https://github.com/phtdacosta/windows-shortcut-maker#readme",
-  "dependencies": {}
+  "scripts": {
+    "test": "exit 0"
+  },
+  "version": "0.0.4"
 }
