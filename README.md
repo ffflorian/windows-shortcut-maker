@@ -1,5 +1,7 @@
 # windows-shortcut-maker
-Native and lightweight module to make file shortcuts on Windows using Node.js
+Native and lightweight module to make file shortcuts on Windows using Node.js.
+
+Based on https://github.com/phtdacosta/windows-shortcut-maker.
 
 [![npm](https://img.shields.io/npm/dy/windows-shortcut-maker.svg)](https://www.npmjs.com/package/windows-shortcut-maker)
 [![npm version](https://badge.fury.io/js/windows-shortcut-maker.svg)](https://badge.fury.io/js/windows-shortcut-maker)
