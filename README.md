@@ -77,6 +77,7 @@ sm
 ## `make(options)`
 
 > Returns `void` after asynchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
+>
 > The API is the same as `makeSync()`
 
 # License
@@ -85,5 +86,5 @@ This project exists under the [GPL-3.0 license](LICENSE).
 
 # Development
 
-1. Let developers to make shortcuts anywhere.
+1. Let developers make shortcuts anywhere.
 2. Add support for making internet shortcuts.
