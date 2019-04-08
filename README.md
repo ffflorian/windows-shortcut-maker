@@ -4,7 +4,7 @@ Native and lightweight module to make file shortcuts on Windows using Node.js.
 
 Based on https://github.com/phtdacosta/windows-shortcut-maker.
 
-[![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker) [![NpmLicense](https://img.shields.io/npm/l/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker)
+[![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker)
 
 This module uses a Windows VBScript file to get native access to the operational system API responsible for making file shortcuts.
 
@@ -18,40 +18,42 @@ This module uses a Windows VBScript file to get native access to the operational
 ### Installation:
 
 ```
-$ npm install @ffflorian/windows-shortcut-maker --save
+$ npm install @ffflorian/windows-shortcut-maker
+# or
+$ yarn add @ffflorian/windows-shortcut-maker
 ```
 
 ## Basic usage:
 
-```js
+```ts
 // Requires the Windows Shortcut Maker module
-const sm = require('windows-shortcut-maker');
+import {make, makeSync, ShortcutOptions} from 'windows-shortcut-maker';
 
-// Creates an object to store any and all parameters to be passed to the Windows API
-const options = {
+// Creates an object to store all parameters to be passed to the Windows API
+const options: ShortcutOptions = {
   filepath: 'C:\\Program Files\\GIMP 2\\bin\\gimp-2.8.exe',
 };
 
 // Creates a "GIMP" shortcut file in the desktop
+sm
+  .make(options)
+  .catch(error => {
+    console.log(error);
+  });
+
+// Synchronously creates a "GIMP" shortcut file in the desktop
 try {
   sm.makeSync(options);
 } catch (error) {
   console.log(error);
 }
-
-// Asynchronously creates a "GIMP" shortcut file in the desktop
-sm
-  .make(options)
-  .catch(error => {
-    console.log(error)
-  }
 ```
 
 # Documentation
 
-## `makeSync(options)`
+## `make(options)`
 
-> Returns `void` after synchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
+> Returns `void` after asynchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
 
 **`options`** is an `Object` that organizedly stores the properties used by the function. Each one is covered below.
 
@@ -73,10 +75,9 @@ sm
 
 **Optional:** **`options.linkWindowMode`** is the initial window mode adopted by the original file when executed. (e.g. `3` is maximized, `4` is normal and `7` is minimized)
 
+## `makeSync(options)`
 
-## `make(options)`
-
-> Returns `void` after asynchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
+> Returns `void` after synchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
 >
 > The API is the same as `makeSync()`
 
