@@ -8,19 +8,19 @@ interface ShortcutOptions {
   /** create the shortcut even if the original file cannot be found. */
   force?: boolean;
   /** the arguments passed to the original file when the new shortcut is executed. */
-  lnkArgs?: string;
+  linkArgs?: string;
   /** the absolute path in which folder the original file should start executing. */
-  lnkCwd?: string;
+  linkCwd?: string;
   /** the description message shown when the cursor stands over the new shortcut without clicking it. */
-  lnkDes?: string;
+  linkDescription?: string;
   /** the key combination that is going to trigger the new shortcut execution. (e.g. `'ALT+CTRL+F'`) */
-  lnkHtk?: string;
+  linkHotkey?: string;
   /** the absolute path to an `.ico` extension image used as the icon for the new shortcut. */
-  lnkIco?: string;
+  linkIcon?: string;
   /** the name given for the new shortcut file which obeys the same name rules as a regular file does. */
-  lnkName?: string;
+  linkName?: string;
   /** the initial window mode adopted by the original file when executed. (e.g. `3` is maximized, `4` is normal and `7` is minimized) */
-  lnkWin?: number;
+  linkWindowMode?: number;
 }
 
 const checkOptions = (options: ShortcutOptions): Required<ShortcutOptions> => {
@@ -28,13 +28,13 @@ const checkOptions = (options: ShortcutOptions): Required<ShortcutOptions> => {
   const defaultOptions = {
     filepath: options.filepath,
     force: false,
-    lnkArgs: '',
-    lnkCwd: '',
-    lnkDes: rawName,
-    lnkHtk: '',
-    lnkIco: options.filepath,
-    lnkName: rawName,
-    lnkWin: 4,
+    linkArgs: '',
+    linkCwd: '',
+    linkDescription: rawName,
+    linkHotkey: '',
+    linkIcon: options.filepath,
+    linkName: rawName,
+    linkWindowMode: 4,
   };
   return {
     ...defaultOptions,
@@ -59,13 +59,13 @@ function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
   return [
     path.join(__dirname, '../scripts/lnk.vbs'),
     options.filepath,
-    options.lnkName,
-    options.lnkArgs,
-    options.lnkDes,
-    options.lnkCwd,
-    options.lnkIco,
-    options.lnkWin.toString(),
-    options.lnkHtk,
+    options.linkName,
+    options.linkArgs,
+    options.linkDescription,
+    options.linkCwd,
+    options.linkIcon,
+    options.linkWindowMode.toString(),
+    options.linkHotkey,
   ];
 }
 
