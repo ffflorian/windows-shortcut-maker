@@ -24,7 +24,7 @@ interface ShortcutOptions {
 }
 
 const checkOptions = (options: ShortcutOptions): Required<ShortcutOptions> => {
-  const rawName = path.basename(options.filepath);
+  const rawName = path.basename(options.filepath).replace(/(.*)\..*$/, '$1');
   const defaultOptions = {
     filepath: options.filepath,
     force: false,
@@ -56,8 +56,9 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
 }
 
 function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
+  const scriptPath = path.join(__dirname, '../scripts/createLink.vbs');
   return [
-    path.join(__dirname, '../scripts/lnk.vbs'),
+    scriptPath,
     options.filepath,
     options.linkName,
     options.linkArgs,
