@@ -7,6 +7,10 @@
     "url": "https://github.com/ffflorian/windows-shortcut-maker/issues"
   },
   "description": "Make Windows shortcuts easily using this native module with no external dependencies.",
+  "files": [
+    "index.js",
+    "scripts"
+  ],
   "homepage": "https://github.com/ffflorian/windows-shortcut-maker#readme",
   "keywords": [
     "windows",
@@ -19,7 +23,7 @@
   ],
   "license": "GPL-3.0",
   "main": "index.js",
-  "name": "windows-shortcut-maker",
+  "name": "@ffflorian/windows-shortcut-maker",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ffflorian/windows-shortcut-maker.git"
@@ -27,5 +31,5 @@
   "scripts": {
     "test": "exit 0"
   },
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
