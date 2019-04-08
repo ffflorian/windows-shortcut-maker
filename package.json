@@ -3,15 +3,27 @@
   "contributors": [
     "Florian Keller <github@floriankeller.de>"
   ],
-  "bugs": {
-    "url": "https://github.com/ffflorian/windows-shortcut-maker/issues"
+  "description": "Create Windows shortcuts using a VBScript.",
+  "devDependencies": {
+    "@semantic-release/changelog": "3.0.2",
+    "@semantic-release/git": "7.0.8",
+    "@types/node": "11.13.0",
+    "husky": "1.3.1",
+    "jasmine": "3.4.0",
+    "lint-staged": "8.1.5",
+    "prettier": "1.16.4",
+    "rimraf": "2.6.3",
+    "semantic-release": "15.13.3",
+    "tslint": "5.15.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.0.1",
+    "typescript": "3.4.2"
   },
-  "description": "Make Windows shortcuts easily using this native module with no external dependencies.",
   "files": [
-    "index.js",
+    "dist",
     "scripts"
   ],
-  "homepage": "https://github.com/ffflorian/windows-shortcut-maker#readme",
+  "homepage": "https://github.com/ffflorian/windows-shortcut-maker",
   "keywords": [
     "windows",
     "shortcut",
@@ -22,14 +34,31 @@
     "url"
   ],
   "license": "GPL-3.0",
-  "main": "index.js",
-  "name": "@ffflorian/windows-shortcut-maker",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ffflorian/windows-shortcut-maker.git"
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.ts": [
+      "tslint --project tsconfig.json --fix",
+      "git add"
+    ]
   },
+  "main": "dist/index.js",
+  "name": "@ffflorian/windows-shortcut-maker",
+  "repository": "https://github.com/ffflorian/windows-shortcut-maker.git",
   "scripts": {
-    "test": "exit 0"
+    "build": "tsc",
+    "clear": "rimraf dist",
+    "dist": "yarn clear && yarn build",
+    "fix": "yarn fix:other && yarn fix:ts",
+    "fix:other": "yarn prettier --write",
+    "fix:ts": "yarn lint:ts --fix",
+    "lint": "yarn lint:ts && yarn lint:other",
+    "lint:other": "yarn prettier --list-different",
+    "lint:ts": "tslint --project tsconfig.json \"**/*.ts\"",
+    "prettier": "prettier --write \"*.{json,md}\"",
+    "release": "semantic-release"
   },
   "version": "0.0.5"
 }
