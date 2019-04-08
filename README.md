@@ -1,10 +1,10 @@
 # windows-shortcut-maker
+
 Native and lightweight module to make file shortcuts on Windows using Node.js.
 
 Based on https://github.com/phtdacosta/windows-shortcut-maker.
 
-[![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://badge.fury.io/js/windows-shortcut-maker)
-[![NpmLicense](https://img.shields.io/npm/l/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker)
+[![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker) [![NpmLicense](https://img.shields.io/npm/l/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker)
 
 This module uses a Windows VBScript file to get native access to the operational system API responsible for making file shortcuts.
 
@@ -32,26 +32,26 @@ const options = {
   filepath: 'C:\\Program Files\\GIMP 2\\bin\\gimp-2.8.exe',
 };
 
-// It creates a "GIMP" shortcut file in the desktop
+// Creates a "GIMP" shortcut file in the desktop
 try {
   sm.makeSync(options);
 } catch (error) {
   console.log(error);
 }
 
-// It asynchronously creates a "GIMP" shortcut file in the desktop
+// Asynchronously creates a "GIMP" shortcut file in the desktop
 sm
-    .make(options)
-    .catch((error) => {
-        console.log(error)
-    }
+  .make(options)
+  .catch(error => {
+    console.log(error)
+  }
 ```
 
 # Documentation
 
 ## `makeSync(options)`
 
-> Returns `void` after synchronously executing the wrapped script which makes the Windows API calls or an `Error` if no valid `filepath` parameter property was previously specified.
+> Returns `void` after synchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
 
 **`options`** is an `Object` that organizedly stores the properties used by the function. Each one is covered below.
 
@@ -65,7 +65,7 @@ sm
 
 **Optional:** **`options.lnkDes`** is the description message shown when the cursor stands over the new shortcut without clicking it.
 
-**Optional:** **`options.lnkCwd`** is the absolute path to which folder the original file should start executing.
+**Optional:** **`options.lnkCwd`** is the absolute path in which folder the original file should start executing.
 
 **Optional:** **`options.lnkIco`** is the absolute path to an `.ico` extension image used as the icon for the new shortcut.
 
@@ -73,10 +73,16 @@ sm
 
 **Optional:** **`options.lnkHtk`** is the key combination that is going to trigger the new shortcut execution. (e.g. `'ALT+CTRL+F'`)
 
+## `make(options)`
+
+> Returns `void` after asynchronously executing the wrapped script which makes the Windows API calls or throws an `Error` if no valid `filepath` parameter property was previously specified.
+> The API is the same as `makeSync()`
+
 # License
 
 This project exists under the [GPL-3.0 license](LICENSE).
 
 # Development
+
 1. Let developers to make shortcuts anywhere.
 2. Add support for making internet shortcuts.
