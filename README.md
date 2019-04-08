@@ -37,6 +37,13 @@ try {
 } catch (error) {
     console.log(error)
 }
+
+// It asynchronously creates a "GIMP" shortcut file in the desktop
+sm
+    .make(options)
+    .catch((error) => {
+        console.log(error)
+    }
 ```
 
 # Documentation
