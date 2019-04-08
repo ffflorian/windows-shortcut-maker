@@ -11,7 +11,7 @@ const getName = (path) => {
 }
 
 const makeSync = (options) => {
-    if (fs.existsSync(options.filepath) === false) return new Error('File "'+ options.filepath +'" does not exist')
+    if (options.force || fs.existsSync(options.filepath) === false) return new Error('File "'+ options.filepath +'" does not exist')
     const rawName = getName(options.filepath).split('.')[0]
     if (isString(options.lnkName) === false) options.lnkName = rawName
     if (isString(options.lnkArgs) === false) options.lnkArgs = ''
@@ -38,7 +38,7 @@ const makeSync = (options) => {
 const make = (options) => {
     return new Promise((resolve, reject) => {
         return fs.exists(options.filepath, exists => {
-            return exists ? resolve() : reject(new Error('File "'+ options.filepath +'" does not exist'));
+            return exists || options.force ? resolve() : reject(new Error('File "'+ options.filepath +'" does not exist'));
         });
     }).then(() => {
         const rawName = getName(options.filepath).split('.')[0]
@@ -63,7 +63,9 @@ const make = (options) => {
                 options.lnkWin,
                 options.lnkHtk
                 ],
-            ).on('error', error => reject(error)).on('exit', () => resolve())
+            )
+            .on('error', error => reject(error))
+            .on('exit', () => resolve())
         });
     });
 }

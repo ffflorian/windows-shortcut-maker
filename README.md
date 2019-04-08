@@ -48,6 +48,8 @@ try {
 
 **Optional:** **`options.lnkName`** is the name given for the new shortcut file which obeys the same name rules as a regular file does.
 
+**Optional:** **`options.force`** create the shortcut even if the original file cannot be found.
+
 **Optional:** **`options.lnkArgs`** are the arguments passed to the original file when the new shortcut is executed.
 
 **Optional:** **`options.lnkDes`** is the description message shown when the cursor stands over the new shortcut without clicking it.
@@ -66,4 +68,4 @@ This project exists under the [GPL-3.0 license](https://github.com/phtdacosta/wi
 # Development
 1. Add an **asynchronous** function version of `makeSync`.
 2. Let developers to make shortcuts anywhere.
-3. Add support for making internet shortcuts.   
+3. Add support for making internet shortcuts.
