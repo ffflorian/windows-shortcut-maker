@@ -21,7 +21,7 @@ const makeSync = (options) => {
     if (isString(options.lnkWin) === false) options.lnkWin = 4
     if (isString(options.lnkHtk) === false) options.lnkHtk = ''
     child_process.spawnSync(
-        'wscript', 
+        'wscript',
         [__dirname + '\\scripts\\lnk.vbs',
         options.filepath,
         options.lnkName,
@@ -35,6 +35,40 @@ const makeSync = (options) => {
     )
 }
 
+const make = (options) => {
+    return new Promise((resolve, reject) => {
+        return fs.exists(options.filepath, exists => {
+            return exists ? resolve() : reject(new Error('File "'+ options.filepath +'" does not exist'));
+        });
+    }).then(() => {
+        const rawName = getName(options.filepath).split('.')[0]
+        if (isString(options.lnkName) === false) options.lnkName = rawName
+        if (isString(options.lnkArgs) === false) options.lnkArgs = ''
+        if (isString(options.lnkDes) === false) options.lnkDes = rawName
+        if (isString(options.lnkCwd) === false) options.lnkCwd = ''
+        if (isString(options.lnkIco) === false) options.lnkIco = filepath
+        if (isString(options.lnkWin) === false) options.lnkWin = 4
+        if (isString(options.lnkHtk) === false) options.lnkHtk = ''
+
+        return new Promise((resolve, reject) => {
+            child_process.spawn(
+                'wscript',
+                [__dirname + '\\scripts\\lnk.vbs',
+                options.filepath,
+                options.lnkName,
+                options.lnkArgs,
+                options.lnkDes,
+                options.lnkCwd,
+                options.lnkIco,
+                options.lnkWin,
+                options.lnkHtk
+                ],
+            ).on('error', error => reject(error)).on('exit', () => resolve())
+        });
+    });
+}
+
 module.exports = {
+    make: make,
     makeSync: makeSync
 }
