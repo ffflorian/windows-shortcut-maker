@@ -13,12 +13,13 @@ strLinkIcon = Wscript.Arguments(6)
 strLinkWindowMode = Wscript.Arguments(7)
 strLinkHotkey = Wscript.Arguments(8)
 
-If strLinkFilepath == "" Then
+dim objShell, strDesktopPath, objLink
+set objShell = CreateObject("WScript.Shell")
+
+If strLinkFilepath = "" Then
   strLinkFilepath = objShell.SpecialFolders("Desktop")
 End If
 
-dim objShell, strDesktopPath, objLink
-set objShell = CreateObject("WScript.Shell")
 set objLink = objShell.CreateShortcut(strLinkFilepath + "\" + strLinkName + ".lnk")
 objLink.Arguments = strLinkArgs
 objLink.Description = strLinkDescription

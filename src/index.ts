@@ -25,7 +25,7 @@ interface ShortcutOptions {
   linkWindowMode?: number;
 }
 
-const checkOptions = (options: ShortcutOptions): Required<ShortcutOptions> => {
+function mergeOptions(options: ShortcutOptions): Required<ShortcutOptions> {
   const rawName = path.basename(options.filepath).replace(/(.*)\..*$/, '$1');
   const defaultOptions = {
     filepath: options.filepath,
@@ -49,18 +49,18 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
   if (typeof options === 'string') {
     options = {filepath: options};
   }
-  const checkedOptions = checkOptions(options);
+  const checkedOptions = mergeOptions(options);
 
   if (!checkedOptions.force && !fs.existsSync(checkedOptions.filepath)) {
-    throw new Error(`Specified file path ${options.filepath}" does not exist`);
+    throw new Error(`Specified file path "${checkedOptions.filepath}" does not exist`);
   }
 
   if (checkedOptions.linkFilepath && !checkedOptions.force) {
     if (!fs.existsSync(checkedOptions.linkFilepath)) {
-      throw new Error(`Specified link file path ${checkedOptions.linkFilepath}" does not exist`);
+      throw new Error(`Specified link file path "${checkedOptions.linkFilepath}" does not exist`);
     }
-    if (fs.lstatSync(checkedOptions.linkFilepath).isFile()) {
-      throw new Error(`Specified link file path ${checkedOptions.linkFilepath}" is a file`);
+    if (!fs.lstatSync(checkedOptions.linkFilepath).isDirectory()) {
+      throw new Error(`Specified link file path "${checkedOptions.linkFilepath}" is not a directory`);
     }
   }
 
