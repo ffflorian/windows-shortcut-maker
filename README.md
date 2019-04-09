@@ -72,7 +72,7 @@ try {
 
 **Optional:** **`options.linkDescription`** is the description message shown when the cursor stands over the new shortcut without clicking it.
 
-**Optional:** **`options.linkFilepath`** is the folder where to save the link (default is the current user's desktop) */
+**Optional:** **`options.linkFilepath`** is the folder where to save the link (default is the current user's desktop)
 
 **Optional:** **`options.linkHotkey`** is the key combination that is going to trigger the new shortcut execution. (e.g. `'ALT+CTRL+F'`)
 
