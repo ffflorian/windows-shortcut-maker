@@ -57,7 +57,7 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
 
 function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
   return [
-    path.join(__dirname, '../scripts/lnk.vbs'),
+    path.join(__dirname, '../scripts/createLink.vbs'),
     options.filepath,
     options.linkName,
     options.linkArgs,
