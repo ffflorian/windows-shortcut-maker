@@ -1,9 +1,15 @@
-## [1.0.1](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.0.0...v1.0.1) (2019-04-09)
+## [1.0.2](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.0.1...v1.0.2) (2019-04-09)
 
 
 ### Bug Fixes
 
-* Small fixes ([#6](https://github.com/ffflorian/windows-shortcut-maker/issues/6)) ([b5e00eb](https://github.com/ffflorian/windows-shortcut-maker/commit/b5e00eb))
+* Actually respect force option ([b7986bd](https://github.com/ffflorian/windows-shortcut-maker/commit/b7986bd))
+
+## [1.0.1](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.0.0...v1.0.1) (2019-04-09)
+
+### Bug Fixes
+
+- Small fixes ([#6](https://github.com/ffflorian/windows-shortcut-maker/issues/6)) ([b5e00eb](https://github.com/ffflorian/windows-shortcut-maker/commit/b5e00eb))
 
 # 1.0.0 (2019-04-08)
 
