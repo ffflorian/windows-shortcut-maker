@@ -24,7 +24,7 @@ interface ShortcutOptions {
 }
 
 const checkOptions = (options: ShortcutOptions): Required<ShortcutOptions> => {
-  const rawName = path.basename(options.filepath);
+  const rawName = path.basename(options.filepath).replace(/(.*)\..*$/, '$1');
   const defaultOptions = {
     filepath: options.filepath,
     force: false,
@@ -48,7 +48,7 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
   }
   const checkedOptions = checkOptions(options);
 
-  if (checkedOptions.force || fs.existsSync(checkedOptions.filepath) === false) {
+  if (!checkedOptions.force && !fs.existsSync(checkedOptions.filepath)) {
     throw new Error(`File ${options.filepath}" does not exist`);
   }
 
@@ -56,8 +56,9 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
 }
 
 function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
+  const scriptPath = path.join(__dirname, '../scripts/createLink.vbs');
   return [
-    path.join(__dirname, '../scripts/createLink.vbs'),
+    scriptPath,
     options.filepath,
     options.linkName,
     options.linkArgs,
