@@ -48,7 +48,7 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
   }
   const checkedOptions = checkOptions(options);
 
-  if (checkedOptions.force || fs.existsSync(checkedOptions.filepath) === false) {
+  if (!checkedOptions.force && !fs.existsSync(checkedOptions.filepath)) {
     throw new Error(`File ${options.filepath}" does not exist`);
   }
 
