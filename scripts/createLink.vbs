@@ -2,28 +2,29 @@
 ' This code is licensed under GPL-3.0 license (see LICENSE for details)
 option explicit
 
-dim strFilepath, strLinkName, strLinkArgs, strLinkDes, strLinkCwd, strLinkIco, strLinkWin, strLinkHtk
+dim strFilepath, strLinkFilepath, strLinkName, strLinkArgs, strLinkDescription, strLinkCwd, strLinkIcon, strLinkWindowMode, strLinkHotkey
 strFilepath = Wscript.Arguments(0)
-strLinkName = Wscript.Arguments(1)
-strLinkArgs = Wscript.Arguments(2)
-strLinkDes = Wscript.Arguments(3)
-strLinkCwd = Wscript.Arguments(4)
-strLinkIco = Wscript.Arguments(5)
-strLinkWin = Wscript.Arguments(6)
-strLinkHtk = Wscript.Arguments(7)
+strLinkFilepath = Wscript.Arguments(1)
+strLinkName = Wscript.Arguments(2)
+strLinkArgs = Wscript.Arguments(3)
+strLinkDescription = Wscript.Arguments(4)
+strLinkCwd = Wscript.Arguments(5)
+strLinkIcon = Wscript.Arguments(6)
+strLinkWindowMode = Wscript.Arguments(7)
+strLinkHotkey = Wscript.Arguments(8)
 
-sub FileToLnk()
-  dim objShell, strDesktopPath, objLink
-  set objShell = CreateObject("WScript.Shell")
-  strDesktopPath = objShell.SpecialFolders("Desktop")
-  set objLink = objShell.CreateShortcut(strDesktopPath + "\" + strLinkName + ".lnk")
-  objLink.Arguments = strLinkArgs
-  objLink.Description = strLinkDes
-  objLink.TargetPath = strFilepath
-  objLink.WindowStyle = strLinkWin
-  objLink.WorkingDirectory = strLinkCwd
-  objLink.Hotkey = strLinkHtk
-  objLink.Save
-end sub
+dim objShell, strDesktopPath, objLink
+set objShell = CreateObject("WScript.Shell")
 
-call FileToLnk()
+If strLinkFilepath = "" Then
+  strLinkFilepath = objShell.SpecialFolders("Desktop")
+End If
+
+set objLink = objShell.CreateShortcut(strLinkFilepath + "\" + strLinkName + ".lnk")
+objLink.Arguments = strLinkArgs
+objLink.Description = strLinkDescription
+objLink.TargetPath = strFilepath
+objLink.WindowStyle = strLinkWindowMode
+objLink.WorkingDirectory = strLinkCwd
+objLink.Hotkey = strLinkHotkey
+objLink.Save
