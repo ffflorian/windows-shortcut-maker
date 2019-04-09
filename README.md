@@ -32,18 +32,18 @@ const options: ShortcutOptions = {
   filepath: 'C:\\Program Files\\GIMP 2\\bin\\gimp-2.8.exe',
 };
 
-// Creates a "GIMP" shortcut file in the desktop
+// Creates a "GIMP" shortcut file on the desktop
 sm
   .make(options)
   .catch(error => {
-    console.log(error);
+    console.error(error);
   });
 
-// Synchronously creates a "GIMP" shortcut file in the desktop
+// Synchronously creates a "GIMP" shortcut file on the desktop
 try {
   sm.makeSync(options);
 } catch (error) {
-  console.log(error);
+  console.error(error);
 }
 ```
 
