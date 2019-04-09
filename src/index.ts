@@ -43,7 +43,7 @@ function mergeOptions(options: ShortcutOptions): Required<ShortcutOptions> {
     ...defaultOptions,
     ...options,
   };
-};
+}
 
 function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
   if (typeof options === 'string') {

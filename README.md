@@ -33,17 +33,14 @@ const options: ShortcutOptions = {
 };
 
 // Creates a "GIMP" shortcut file on the desktop
-sm
-  .make(options)
-  .catch(error => {
-    console.error(error);
-  });
-
+sm.make(options).catch(error => {
+  console.error(error);
+});
 
 // Creates an object to store all parameters to be passed to the Windows API
 const options: ShortcutOptions = {
   filepath: 'C:\\Program Files\\GIMP 2\\bin\\gimp-2.8.exe',
-  linkFilepath: '.'
+  linkFilepath: '.',
 };
 
 // Synchronously creates a "GIMP" shortcut file in the current directory
