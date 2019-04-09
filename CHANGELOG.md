@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.0.2...v1.1.0) (2019-04-09)
+
+
+### Features
+
+* Custom link path ([#7](https://github.com/ffflorian/windows-shortcut-maker/issues/7)) ([a908298](https://github.com/ffflorian/windows-shortcut-maker/commit/a908298))
+
 ## [1.0.2](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.0.1...v1.0.2) (2019-04-09)
 
 
