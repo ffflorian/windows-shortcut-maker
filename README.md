@@ -39,7 +39,14 @@ sm
     console.error(error);
   });
 
-// Synchronously creates a "GIMP" shortcut file on the desktop
+
+// Creates an object to store all parameters to be passed to the Windows API
+const options: ShortcutOptions = {
+  filepath: 'C:\\Program Files\\GIMP 2\\bin\\gimp-2.8.exe',
+  linkFilepath: '.'
+};
+
+// Synchronously creates a "GIMP" shortcut file in the current directory
 try {
   sm.makeSync(options);
 } catch (error) {
@@ -65,6 +72,8 @@ try {
 
 **Optional:** **`options.linkDescription`** is the description message shown when the cursor stands over the new shortcut without clicking it.
 
+**Optional:** **`options.linkFilepath`** is the folder where to save the link (default is the current user's desktop) */
+
 **Optional:** **`options.linkHotkey`** is the key combination that is going to trigger the new shortcut execution. (e.g. `'ALT+CTRL+F'`)
 
 **Optional:** **`options.linkIcon`** is the absolute path to an `.ico` extension image used as the icon for the new shortcut.
@@ -85,5 +94,4 @@ This project exists under the [GPL-3.0 license](LICENSE).
 
 # Development
 
-1. Let developers make shortcuts anywhere.
-2. Add support for making internet shortcuts.
+1. Add support for making internet shortcuts.

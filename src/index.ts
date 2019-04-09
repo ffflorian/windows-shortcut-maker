@@ -13,6 +13,8 @@ interface ShortcutOptions {
   linkCwd?: string;
   /** the description message shown when the cursor stands over the new shortcut without clicking it. */
   linkDescription?: string;
+  /** the folder where to save the link (default is the current user's desktop) */
+  linkFilepath?: string;
   /** the key combination that is going to trigger the new shortcut execution. (e.g. `'ALT+CTRL+F'`) */
   linkHotkey?: string;
   /** the absolute path to an `.ico` extension image used as the icon for the new shortcut. */
@@ -31,6 +33,7 @@ const checkOptions = (options: ShortcutOptions): Required<ShortcutOptions> => {
     linkArgs: '',
     linkCwd: '',
     linkDescription: rawName,
+    linkFilepath: '',
     linkHotkey: '',
     linkIcon: options.filepath,
     linkName: rawName,
@@ -49,7 +52,16 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
   const checkedOptions = checkOptions(options);
 
   if (!checkedOptions.force && !fs.existsSync(checkedOptions.filepath)) {
-    throw new Error(`File ${options.filepath}" does not exist`);
+    throw new Error(`Specified file path ${options.filepath}" does not exist`);
+  }
+
+  if (checkedOptions.linkFilepath && !checkedOptions.force) {
+    if (!fs.existsSync(checkedOptions.linkFilepath)) {
+      throw new Error(`Specified link file path ${checkedOptions.linkFilepath}" does not exist`);
+    }
+    if (fs.lstatSync(checkedOptions.linkFilepath).isFile()) {
+      throw new Error(`Specified link file path ${checkedOptions.linkFilepath}" is a file`);
+    }
   }
 
   return checkedOptions;
@@ -60,6 +72,7 @@ function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
   return [
     scriptPath,
     options.filepath,
+    options.linkFilepath,
     options.linkName,
     options.linkArgs,
     options.linkDescription,
