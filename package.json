@@ -5,6 +5,7 @@
   ],
   "description": "Create Windows shortcuts using a VBScript.",
   "devDependencies": {
+    "@ffflorian/prettier-config": "0.0.3",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@types/node": "11.13.4",
@@ -46,6 +47,7 @@
   },
   "main": "dist/index.js",
   "name": "@ffflorian/windows-shortcut-maker",
+  "prettier": "@ffflorian/prettier-config",
   "repository": "https://github.com/ffflorian/windows-shortcut-maker.git",
   "scripts": {
     "build": "tsc",
