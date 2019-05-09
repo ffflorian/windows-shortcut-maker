@@ -6,6 +6,7 @@
   "description": "Create Windows shortcuts using a VBScript.",
   "devDependencies": {
     "@ffflorian/prettier-config": "0.0.3",
+    "@ffflorian/tslint-config": "0.1.0",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@types/node": "12.0.0",
@@ -25,6 +26,11 @@
     "scripts"
   ],
   "homepage": "https://github.com/ffflorian/windows-shortcut-maker",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "keywords": [
     "windows",
     "shortcut",
