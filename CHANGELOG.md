@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.1.0...v2.0.0) (2019-07-17)
+
+
+### Features
+
+* Set ES6 as target and require Node >= 10.9 ([#79](https://github.com/ffflorian/windows-shortcut-maker/issues/79)) ([e77b9b1](https://github.com/ffflorian/windows-shortcut-maker/commit/e77b9b1))
+
+
+### BREAKING CHANGES
+
+* Node.js >= 10.9 is required.
+
 # [1.1.0](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.0.2...v1.1.0) (2019-04-09)
 
 
