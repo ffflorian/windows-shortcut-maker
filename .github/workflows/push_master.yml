@@ -7,6 +7,7 @@ on:
 
 jobs:
   build_test_release:
+    name: Build, test and release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -14,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 12.x
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -23,11 +24,17 @@ jobs:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
-      - name: Build, test and release
+      - name: Build and test
         run: |
           yarn
           yarn lint
+          yarn test
           yarn dist
+        if: |
+          contains(github.event.commits[0].message, '[skip ci]') == false &&
+          contains(github.event.commits[0].message, '[ci skip]') == false
+      - name: Release on npm
+        run: |
           git config --global "user.email" "${GIT_EMAIL}"
           git config --global "user.name" "${GIT_NAME}"
           REPO_URL="$(git remote get-url origin | sed -n "s/https:\/\/github.com\//https:\/\/${GIT_AUTHOR_NAME}:${GH_TOKEN}@github.com\//p")"
@@ -39,6 +46,17 @@ jobs:
           GIT_COMMITTER_EMAIL: ffflobot@users.noreply.github.com
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: |
+          contains(github.event.commits[0].message, '[skip ci]') == false &&
+          contains(github.event.commits[0].message, '[ci skip]') == false
+      - name: Release on GitHub
+        run: |
+          rm .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GH_TOKEN}" > ~/.npmrc
+          sed -i "s/\"name\": \"/\"name\": \"@ffflorian\//" package.json
+          npm publish --registry=https://npm.pkg.github.com || true
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         if: |
           contains(github.event.commits[0].message, '[skip ci]') == false &&
           contains(github.event.commits[0].message, '[ci skip]') == false
