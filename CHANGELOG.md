@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/ffflorian/windows-shortcut-maker/compare/v2.0.0...v2.0.1) (2019-12-18)
+
+
+### Bug Fixes
+
+* Add empty tests ([d99fd6e](https://github.com/ffflorian/windows-shortcut-maker/commit/d99fd6e))
+
 # [2.0.0](https://github.com/ffflorian/windows-shortcut-maker/compare/v1.1.0...v2.0.0) (2019-07-17)
 
 
