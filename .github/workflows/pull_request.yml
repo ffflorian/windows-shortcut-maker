@@ -6,6 +6,9 @@ jobs:
   build_lint_test:
     name: Build, lint and test
     runs-on: ubuntu-latest
+    if: |
+      !contains(github.event.head_commit.message, '[ci skip]') &&
+      !contains(github.event.head_commit.message, '[skip ci]')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
@@ -27,6 +30,3 @@ jobs:
           yarn lint
           yarn test
           yarn dist
-        if: |
-          contains(github.event.commits[0].message, '[skip ci]') == false &&
-          contains(github.event.commits[0].message, '[ci skip]') == false
