@@ -14,7 +14,7 @@
     "jasmine": "3.5.0",
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
-    "rimraf": "3.0.1",
+    "rimraf": "3.0.2",
     "semantic-release": "17.0.2",
     "tslint": "6.0.0",
     "tslint-config-prettier": "1.18.0",
