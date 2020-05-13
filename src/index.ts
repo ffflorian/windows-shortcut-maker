@@ -2,7 +2,7 @@ import {spawn, spawnSync} from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-interface ShortcutOptions {
+export interface ShortcutOptions {
   /** the absolute path including the name of which file should the module make a shortcut (required). */
   filepath: string;
   /** create the shortcut even if the original file cannot be found. */
@@ -67,7 +67,7 @@ function prepare(options: ShortcutOptions | string): Required<ShortcutOptions> {
   return checkedOptions;
 }
 
-function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
+function buildArgs(options: Required<ShortcutOptions>): readonly string[] {
   const scriptPath = path.join(__dirname, '../scripts/createLink.vbs');
   return [
     scriptPath,
@@ -83,12 +83,12 @@ function buildArgs(options: Required<ShortcutOptions>): ReadonlyArray<string> {
   ];
 }
 
-function makeSync(options: ShortcutOptions | string): void {
+export function makeSync(options: ShortcutOptions | string): void {
   const checkedOptions = prepare(options);
   spawnSync('wscript', buildArgs(checkedOptions));
 }
 
-function make(options: ShortcutOptions | string): Promise<void> {
+export function make(options: ShortcutOptions | string): Promise<void> {
   const checkedOptions = prepare(options);
   return new Promise((resolve, reject) => {
     spawn('wscript', buildArgs(checkedOptions))
@@ -96,5 +96,3 @@ function make(options: ShortcutOptions | string): Promise<void> {
       .on('exit', () => resolve());
   });
 }
-
-export {make, makeSync, ShortcutOptions};
