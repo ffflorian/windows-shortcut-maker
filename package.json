@@ -5,7 +5,7 @@
   ],
   "description": "Create Windows shortcuts using a VBScript.",
   "devDependencies": {
-    "@ffflorian/eslint-config": "0.3.3",
+    "@ffflorian/eslint-config": "0.4.0",
     "@ffflorian/prettier-config": "0.0.6",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
