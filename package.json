@@ -1,7 +1,7 @@
 {
   "author": "Pedro Costa <pedrohenriqueteodorodacosta@gmail.com>",
   "contributors": [
-    "Florian Keller <github@floriankeller.de>"
+    "Florian Keller <git@ffflorian.de>"
   ],
   "description": "Create Windows shortcuts using a VBScript.",
   "devDependencies": {
