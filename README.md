@@ -1,4 +1,4 @@
-# windows-shortcut-maker [![Build Status](https://github.com/ffflorian/windows-shortcut-maker/workflows/Build/badge.svg)](https://github.com/ffflorian/windows-shortcut-maker/actions/) [![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ffflorian/windows-shortcut-maker)](https://dependabot.com)
+# windows-shortcut-maker [![Build Status](https://github.com/ffflorian/windows-shortcut-maker/workflows/Build/badge.svg)](https://github.com/ffflorian/windows-shortcut-maker/actions/) [![npm version](https://img.shields.io/npm/v/@ffflorian/windows-shortcut-maker.svg)](https://www.npmjs.com/package/@ffflorian/windows-shortcut-maker)
 
 Native and lightweight module to make file shortcuts on Windows using Node.js.
 
