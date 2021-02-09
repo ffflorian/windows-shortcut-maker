@@ -41,11 +41,6 @@
     "scripts"
   ],
   "homepage": "https://github.com/ffflorian/windows-shortcut-maker",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "keywords": [
     "windows",
     "shortcut",
