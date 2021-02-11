@@ -31,7 +31,7 @@
     "publish-flat": "1.4.1",
     "rimraf": "3.0.2",
     "semantic-release": "17.3.8",
-    "typescript": "4.1.4"
+    "typescript": "4.1.5"
   },
   "engines": {
     "node": ">= 10.9"
