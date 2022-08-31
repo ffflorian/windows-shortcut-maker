@@ -70,7 +70,7 @@
     "lint:other": "yarn prettier --list-different",
     "lint:ts": "eslint --ignore-path .gitignore --ext .ts src/",
     "postversion": "node ../node_modules/publish-flat/cli-copy.js -i package.json -o ../package.json version",
-    "prettier": "prettier \"*.{json,md}\"",
+    "prettier": "prettier \"*.{json,md,yml}\"",
     "release": "semantic-release",
     "test": "exit 0"
   },
